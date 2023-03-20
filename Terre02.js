@@ -1,5 +1,18 @@
+"use strict";
+const SLASH = '/';
 let path = __filename;
-const searchSlash = '/';
-let indLastSlash = path.lastIndexOf(searchSlash)
-let nomFichier = path.substr(indLastSlash+1)
-console.log(nomFichier);
+let nameFile;
+
+let ReturnFileName = () => {
+    let indLastSlash;
+    let nameFile;
+
+    indLastSlash = path.lastIndexOf(SLASH);
+    nameFile = path.substr(indLastSlash + 1);
+
+    return nameFile;
+};
+
+nameFile = ReturnFileName();
+
+console.log(nameFile);
