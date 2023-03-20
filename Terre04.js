@@ -35,6 +35,7 @@ let returnAlphabetFromLetter = (alphabet,inputLetter) => {
 };
 
 alphabet = returnAlphabet();
+//QUESTION A POSER : doit on inclure l'appel de returnAlphabetFromLetter dans returnAlphabet ?
 alphabetFromLetter = returnAlphabetFromLetter(alphabet,inputLetter);
 
 console.log(alphabetFromLetter);

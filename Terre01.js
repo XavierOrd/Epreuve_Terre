@@ -13,7 +13,7 @@ const ASCII_CHAR_A=97;
 const ASCII_CHAR_Z=122;
 let alphabet=''; //question à poser. Peut-on avoir une variable locale et globale de même nom ?
 
-let ReturnAlphabet = () => {  
+let returnAlphabet = () => {  
   let alphabet='';
   let letter='';
   for (let i = ASCII_CHAR_A; i <= ASCII_CHAR_Z; i++) { 
@@ -23,7 +23,7 @@ let ReturnAlphabet = () => {
   return alphabet;
 };
 
-alphabet = ReturnAlphabet();
+alphabet = returnAlphabet();
 
 console.log(alphabet);
 

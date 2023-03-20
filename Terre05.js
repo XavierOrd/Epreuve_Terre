@@ -1,4 +1,4 @@
-
+"use strict";
 let inputNumber = process.argv[2]; //on récupère les paramètres en entrée
 let calcul = 0;
 if (isNaN(inputNumber)) {

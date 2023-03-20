@@ -3,7 +3,7 @@ const SLASH = '/';
 let path = __filename;
 let nameFile;
 
-let ReturnFileName = () => {
+let returnFileName = () => {
     let indLastSlash;
     let nameFile;
 
@@ -13,6 +13,6 @@ let ReturnFileName = () => {
     return nameFile;
 };
 
-nameFile = ReturnFileName();
+nameFile = returnFileName();
 
 console.log(nameFile);
