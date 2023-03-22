@@ -1,30 +1,37 @@
+"use strict";
+let hours,minutes,amPm;
 
-let listeArgs = process.argv.slice(2);
-let numberOfArgs = listeArgs.length;
-let inputHour = '';
-let result = 0;
-let controleOK = false;
-let hoursConvert = 0
-if ((numberOfArgs < 1) || (numberOfArgs > 1)) {
-    console.log("Un seul argument obligatoire");
-} else {
-    inputHour = listeArgs[0];
-}
+let inputControl = (listeArgs) => {
+    let numberOfArgs = listeArgs.length;
+    let inputHour = '';
+    let indOfSeparator;
+    let minutesAndMeridian;
 
-let indOfSeparator = inputHour.indexOf(":");
+    if ((numberOfArgs < 1) || (numberOfArgs > 1)) {
+        console.log("Enter a hour (12h) like 3:30pm");
+        return false;
+    } else {
+        inputHour = listeArgs[0];
+    }
+    
+    indOfSeparator = inputHour.indexOf(":");
+    
+    hours = Number(inputHour.slice(0, indOfSeparator));
+    minutesAndMeridian = inputHour.slice(indOfSeparator + 1);
+    minutes = Number(minutesAndMeridian.slice(0, 2));
+    amPm = minutesAndMeridian.slice(2);
+    amPm = amPm.toUpperCase();
+    
+    if (isNaN(hours) || isNaN(minutes) || indOfSeparator < 0 || (amPm != 'AM' && amPm != 'PM')) {
+        console.log("You have to input 12h format (HH:MMAM)");
+        return false;
+    }
+    return true;
+ };
 
-let hours = Number(inputHour.slice(0, indOfSeparator));
-let minutesAndMeridian = inputHour.slice(indOfSeparator + 1);
-let minutes = Number(minutesAndMeridian.slice(0, 2));
-let amPm = minutesAndMeridian.slice(2);
-amPm = amPm.toUpperCase();
-
-
-
-if (isNaN(hours) || isNaN(minutes) || indOfSeparator < 0 || (amPm != 'AM' && amPm != 'PM')) {
-    console.log("Format attendu : HH:MMAM");
-} else {
-
+ let convert12To24 = () => {
+    let hoursConvert;
+    let strTime;
     hoursConvert = hours;
 
     switch (amPm) {
@@ -39,12 +46,13 @@ if (isNaN(hours) || isNaN(minutes) || indOfSeparator < 0 || (amPm != 'AM' && amP
             if (hours != 12) {
                 hoursConvert = hours + 12
             }
-            break;
-        default:
-            alert('you have to specify AM or PM');
+            break;     
     }
+    strTime = hoursConvert + ':' + minutes;
+    return strTime
+ };
 
-    let strTime = hoursConvert + ':' + minutes;
+ if ( inputControl( process.argv.slice(2)) ) {
+    console.log(convert12To24());
+ };
 
-    console.log(strTime);
-}

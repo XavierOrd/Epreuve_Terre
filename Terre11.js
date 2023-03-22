@@ -1,7 +1,7 @@
 /* Un nombre premier possède 2 diviseurs différents: 1 et lui-même.
 Pour déterminer si un nombre est premier, tu dois donc dresser la liste de tous ses diviseurs.
 Un diviseur est un nombre par lequel tu peux effectuer une division et obtenir un nombre entier (sans virgule). */
-
+"use strict";
 let inputNumber = 0;
 
 let inputControl = (listeArgs) => {
@@ -18,7 +18,7 @@ let inputControl = (listeArgs) => {
             console.log("You have to input positive number");
             return false;
         } else if ((inputNumber == 0) || (inputNumber == 1)) {
-            console.log(`${inputNumber} is not a primary number`);
+            console.log(`${inputNumber} is not a prime number`);
             return false;
         }
     }
@@ -38,7 +38,7 @@ let isDividableByItselfAndOne = (inputNumber) => {
     return false;
 };
 
-let isPrimaryNumber = (inputNumber) => {
+let isPrimeNumber = (inputNumber) => {
     let result;
     let i;
 
@@ -60,13 +60,11 @@ let isPrimaryNumber = (inputNumber) => {
 };
 
 if ( inputControl(process.argv.slice(2)) ) {
-    if ( isPrimaryNumber(inputNumber) ) {
-        console.log("C'est un nombre premier");
+    if ( isPrimeNumber(inputNumber) ) {
+        console.log("It's a prime number");
     } else {
-        console.log("Ce n'est pas un nombre premier");
+        console.log("It's not a prime number");
     }
 }
-
-
 
 

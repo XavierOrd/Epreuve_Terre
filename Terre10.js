@@ -6,6 +6,7 @@ Nous soustrayons les nombres impairs consécutifs du nombre dont nous cherchons 
 7- 7 = 0
 Vous pouvez observer que nous avons soustrait 4 fois. Ainsi, √16 = 4
 */
+"use strict";
 let inputNumber;
 
 let inputControl = (listeArgs) => {
