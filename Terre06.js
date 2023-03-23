@@ -1,18 +1,25 @@
-let dividende = Number(process.argv[2]); //on récupère les paramètres en entrée
-let diviseur = Number(process.argv[3]); //on récupère les paramètres en entrée
-let quotient = 0;
-let reste = 0;
+"use strict";
+let calcDivision = () => {
+    let dividende;
+    let diviseur;
+    let quotient = 0;
+    let reste = 0;
 
+    dividende = parseInt(process.argv[2]);
+    diviseur = parseInt(process.argv[3]);
 
-quotient = dividende/diviseur
-quotient = Math.floor(quotient)
+    quotient = dividende / diviseur
+    quotient = Math.floor(quotient)
 
-reste = dividende % diviseur
-reste = Math.floor(reste)
+    reste = dividende % diviseur
+    reste = Math.floor(reste)
 
-if (isNaN(quotient) || !isFinite(quotient) || (quotient == 0) ) {
-    console.log('Erreur');
-} else {
-    console.log("Résultat: "+quotient);
-    console.log("Reste: "+reste);
-}
+    if (isNaN(quotient) || !isFinite(quotient) || (quotient == 0)) {
+        console.log('Erreur');
+    } else {
+        console.log("Résultat: " + quotient);
+        console.log("Reste: " + reste);
+    }
+};
+
+calcDivision();

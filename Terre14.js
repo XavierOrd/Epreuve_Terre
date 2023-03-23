@@ -1,5 +1,5 @@
 "use strict";
-let listNumber =new Array();
+let listNumber = new Array();
 
 let inputControl = (listeArgs) => {
     let numberOfArgs = listeArgs.length;

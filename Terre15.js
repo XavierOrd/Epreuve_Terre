@@ -1,46 +1,55 @@
+"use strict";
 let listeArgs = process.argv.slice(2);
-let numberOfArgs = listeArgs.length;
 let shouldSkip = false;
-let nombrePrec;
-let trieOk=true;
+let previousNumber;
+let isSorted = true;
 
-listeArgs.forEach(transformeEnEntier);
-if (shouldSkip) {
-    console.log("Erreur");
-} else {
-    shouldSkip=false;
-    listeArgs.forEach(controlTrie);
-    if (!trieOk) {
-        console.log("Pas triée !");
-    } else {
-        console.log("Triée !");
-    }
-}
-
-function transformeEnEntier(item, index, array) {
+function stringToInteger(item, index, array) {
+    let numberConvert;
     if (shouldSkip) {
         return;
     }
-    let monNombre = Number(item)
-    if (isNaN(monNombre)) {
+    numberConvert = parseInt(item);
+    if (isNaN(numberConvert)) {
         shouldSkip = true;
         return;
     }
-    array[index] = monNombre;
-}
+    array[index] = numberConvert;
+};
 
-function controlTrie(item, index, array) {
-    if (!trieOk) {
+function sortControl(item) {
+    if (!isSorted) {
         return;
     }
-    if (nombrePrec==undefined) {
-        nombrePrec=item;
+    if (previousNumber == undefined) {
+        previousNumber = item;
         return;
     }
-    
-    if (nombrePrec>item) {
-        trieOk=false;
+
+    if (previousNumber > item) {
+        isSorted = false;
         return;
     }
-    nombrePrec=item;
-}
+    previousNumber = item;
+};
+
+function sortedOrNotSorted() {
+    listeArgs.forEach(stringToInteger);
+    if (shouldSkip) {
+        console.log("Erreur");
+    } else {
+        listeArgs.forEach(sortControl);
+        if (!isSorted) {
+            console.log("Pas trié !");
+        } else {
+            console.log("Trié !");
+        }
+    }
+};
+
+sortedOrNotSorted();
+
+
+
+
+

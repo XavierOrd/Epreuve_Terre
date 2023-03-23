@@ -1,17 +1,20 @@
-let listeArgs = process.argv.slice(2);
-let numberOfArgs = listeArgs.length;
-let tailleCh = 0;
-let maPhrase = '';
-let maPhraseInverse = '';
-if ( numberOfArgs > 0 ) {
+"use strict";
+let reverseSentence = (listeArgs) => {
+    let numberOfArgs = listeArgs.length;
+    let sentenceLength = 0;
+    let inputSentence = '';
+    let outputSentence = '';
 
-    maPhrase = listeArgs[0];
-    tailleCh = maPhrase.length-1;
-    
-    if (tailleCh > 0) {
-        for(let i = tailleCh; i>=0; i--) {
-            maPhraseInverse+=maPhrase[i];
+    if (numberOfArgs > 0) {
+        inputSentence = listeArgs[0];
+        sentenceLength = inputSentence.length - 1;
+        if (sentenceLength > 0) {
+            for (let i = sentenceLength; i >= 0; i--) {
+                outputSentence += inputSentence[i];
+            }
         }
-        console.log(maPhraseInverse);
     }
-}
+    return outputSentence
+};
+
+console.log(reverseSentence(process.argv.slice(2)));

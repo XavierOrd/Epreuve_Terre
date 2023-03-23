@@ -1,17 +1,22 @@
-let listeArgs = process.argv.slice(2);
-let numberOfArgs = listeArgs.length;
-let monArgument = '';
-let monTest;
+"use strict";
+let returnLengthOfString = (listeArgs) => {
+    let numberOfArgs = listeArgs.length;
+    let inputString = '';
+    let outputResult;
+    let numberConvert;
 
-
-if (( numberOfArgs > 1 ) || (numberOfArgs==0)) {
-    console.log("erreur");
-} else {
-    monArgument = listeArgs[0];
-    monTest = parseInt(monArgument)
-    if (isNaN(monTest)) {
-        console.log(monArgument.length);
+    if (( numberOfArgs > 1 ) || (numberOfArgs==0)) {
+        outputResult="erreur";
     } else {
-        console.log("erreur");
+        inputString = listeArgs[0];
+        numberConvert = parseInt(inputString)
+        if (isNaN(numberConvert)) {
+            outputResult=inputString.length;
+        } else {
+            outputResult="erreur";
+        }
     }
+    return outputResult;
 }
+
+console.log(returnLengthOfString(process.argv.slice(2)));
